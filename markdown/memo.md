@@ -17,6 +17,11 @@ sudo apt install ruby-railties
 rails new backend -d mysql --skip-bundle
 ```
 
+このままではgitに上げられないので以下を削除する
+```
+rm -rf ./backend/.git
+```
+
 # frontend
 
 ## 作成
