@@ -1,6 +1,6 @@
-# ruby on rails と angular で Todo
+# ruby on rails で Todo
 
-# backend
+# app
 作成ようにインストールしておく
 
 ```
@@ -14,26 +14,16 @@ sudo apt install ruby-railties
 
 作成する
 ```
-rails new backend -d mysql --skip-bundle
+rails new app -d mysql --skip-bundle
 ```
 
 このままではgitに上げられないので以下を削除する
 ```
-rm -rf ./backend/.git
+rm -rf ./app/.git
 ```
 
-# frontend
-
-## 作成
-作成ようにインストールしておく
+## webpackerをインストールする
 
 ```
-npm install -g @angular/cli
+rails webpacker:install
 ```
-
-作成する
-```
-ng new frontend
-```
-
-> rx使って遊ぼうかな。

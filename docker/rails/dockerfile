@@ -1,0 +1,4 @@
+FROM ruby:3.0.2
+
+RUN mkdir /app && \
+    gem install rails

@@ -13,22 +13,17 @@ services:
             TZ: Asia/Tokyo
         volumes:
             - ./mysql/my.cnf:/etc/mysql/my.cnf
-
-    nginx:
-        image: nginx:alpine
-        container_name: nginx
+            
+    rails:
+        build: ./rails/
+        container_name: rails
+        user: $user
         ports:
-            - 8080:80
-        volumes:
-            - ./nginx/:/etc/nginx/conf.d/
-        working_dir: /var/www/
-
-    angular:
-        build: ./angular/
-        container_name: angular
-        volumes:
-            - ../frontend:/mnt/frontend/
-        working_dir: /mnt/frontend/
-        command: sh -c "npm install && ng serve"
-        ports:
-            - "4200:4200"
+            - "3000:3000"
+        volumes: 
+            - ../:/app
+        links:
+            - mysql
+        working_dir: /app
+        tty: true
+        # command: sh -c "bundle install && rails s -p 3000 -b '0.0.0.0'"
