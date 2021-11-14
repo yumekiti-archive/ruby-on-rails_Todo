@@ -1,7 +1,4 @@
-UID := $(shell id -u)
-GID := $(shell id -g)
-USER := $(UID):$(GID)
-dc := user=$(USER) docker-compose -f ./docker/docker-compose.yml
+dc := docker-compose -f ./docker/docker-compose.yml
 
 .PHONY: up
 up:
@@ -32,3 +29,7 @@ mysql:
 .PHONY: rails
 rails:
 	$(dc) exec rails /bin/sh
+
+.PHONY: new
+new:
+	$(dc) run --no-deps rails rails new . --force --database=mysql
