@@ -1,4 +1,7 @@
-dc := docker-compose -f ./docker/docker-compose.yml
+UID := $(shell id -u)
+GID := $(shell id -g)
+USER := $(UID):$(GID)
+dc := user=$(USER) docker-compose -f ./docker/docker-compose.yml
 
 .PHONY: up
 up:
@@ -33,3 +36,7 @@ rails:
 .PHONY: new
 new:
 	$(dc) run --no-deps rails rails new . --force --database=mysql
+
+.PHONY: create
+create:
+	$(dc) exec rails rake db:create
