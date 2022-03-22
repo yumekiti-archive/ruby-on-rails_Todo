@@ -1,3 +1,32 @@
+<form method="POST" action="/tasks">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <div>
+    <label for="task">Task Name</label>
+    <input id="task" name="task" type="text" required>
+  </div>
+  <div>
+    <select name="state">
+      <% @status.each_with_index do |s,i| %>
+      <option value="<%= s %>"><%= s %></option>
+      <% end %>
+    </select>
+    <label>Task State</label>
+  </div>
+  <div>
+    <input type="date" name="limit_date" required>
+    <label>Task Limit Day</label>
+  </div>
+  <p>
+    <button type="submit">create</button>
+  </p>
+</div>
+</form>
+
+<!-- flashメッセージを表示 -->
+<% flash.each do |msg| %>
+<p><%= msg %></p>
+<% end %>
+
 <table>
   <thead>
     <tr>
