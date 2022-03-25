@@ -12,4 +12,10 @@ class TasksController < ApplicationController
     task.save
     redirect_to '/tasks', notice: 'タスクを作成しました。'
   end
+
+  def destroy
+    task       = Task.find(params[:id])
+    task.destroy
+    redirect_to '/tasks', notice: 'タスクを削除しました。'
+  end
 end

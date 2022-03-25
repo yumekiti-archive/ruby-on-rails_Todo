@@ -48,8 +48,12 @@
         <a href="/tasks/<%= t.id %>">edit</a>
       </td>
       <td>
-        <!-- まだ実装しない -->
-        <button type="submit">delete</button>
+        <!-- ここを修正する -->
+        <form method="POST" action="/tasks/<%= t.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <button type="submit">delete</button>
+        </form>
       </td>
     </tr>
     <% end %>
