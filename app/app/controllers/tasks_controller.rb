@@ -30,4 +30,10 @@ class TasksController < ApplicationController
 
     redirect_to '/tasks', notice: 'タスクを更新しました。'
   end
+
+  def show
+    id      = params[:id]
+    @task   = Task.find(id)
+    @status = ['todo', 'doing', 'done']
+  end
 end
